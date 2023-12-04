@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    <bean id="auto1" class="problema2.Autoturism">
+        <property name="Marca" value="audi"/>
+        <property name="pret" value="5000"/>
+        <property name="tip" value="Autoturism"/>
+        <property name="VolumPortbagaj" value="300"/>
+        <property name="CatCantareste" value="5"/>
+    </bean>
+
+    <bean id="auto2" class="problema2.Autoturism">
+        <constructor-arg value="Renault"/>
+        <constructor-arg value="3500"/>
+        <constructor-arg value="Autoturism"/>
+        <constructor-arg value="260"/>
+        <constructor-arg value="4"/>
+    </bean>
+
+
+    <bean id="Vehicul" class="problema2.Vehicul">
+        <constructor-arg value="asd"/>
+        <constructor-arg value="1000"/>
+        <constructor-arg value="Motocicleta"/>
+    </bean>
+    <bean id="motocicleta1" class="problema2.Motocicleta" parent="Vehicul" init-method="init" destroy-method="disp">
+        <constructor-arg  value="250"/>
+    </bean>
+
+
+</beans>
