@@ -1,12 +1,12 @@
 package problema3;
 
-public class masina {
+public class Masina {
     private String nr_inmatriculare, marca,culoare;
     private int an_fab,nr_km;
 
 
-    public masina(){}
-    public masina(String nr_inmatriculare, String marca, String culoare, int an_fab, int nr_km) {
+    public Masina(){}
+    public Masina(String nr_inmatriculare, String marca, String culoare, int an_fab, int nr_km) {
         this.nr_inmatriculare = nr_inmatriculare;
         this.marca = marca;
         this.culoare = culoare;

@@ -10,28 +10,45 @@ class OperatiiBD {
         this.dataSource = dataSource;
         this.jdbcTemplateObject = new JdbcTemplate(dataSource);
     }
-    public void insert(String nume, int varsta) {
-        String SQL = "insert into masini (nr_inmatriculare, marca, an_fab,culoare,nr_km) values (?, ?,?,?,?)";
+    public void insert(String nr_inmatriculare, String marca, int an_fab, String culoare, int nr_km) {
+        String SQL = "insert into masini (nr_inmatriculare, marca, an_fabricatie,culoare,nr_km) values (?, ?,?,?,?)";
         jdbcTemplateObject.update( SQL, nr_inmatriculare, marca,an_fab,culoare,nr_km);
     }
-    public void update(int id, int varsta){
-        String SQL = "update persoane set varsta = ? where id = ?";
-        jdbcTemplateObject.update(SQL, varsta, id);
-    }
-    public void delete(int id){
-        String SQL = "delete from persoane where id = ?";
-        jdbcTemplateObject.update(SQL, id);
+    public void delete(String nr_inmatriculare){
+        String SQL = "delete from masini where nr_inmatriculare = ?";
+        jdbcTemplateObject.update(SQL, nr_inmatriculare);
     }
 
-    public masina getMasina(String nr_inmatriculare) {
-        String SQL = "select * from masini where nr_inmatriculare = ?";
-        masina mas = jdbcTemplateObject.queryForObject(SQL,new Object[]{nr_inmatriculare},
-                new PersoanaMapper());
-        return pers;
+    public int getNrMarca(String marca) {
+        String SQL = "SELECT COUNT(*) FROM masini WHERE marca = ?";
+
+        // Specify the parameters for the SQL query
+        Object[] params = { marca };
+
+        // Execute the query and get the count
+        int rowCount = jdbcTemplateObject.queryForObject(SQL, Integer.class, params);
+
+        return rowCount;
     }
-    public List<Persoana> getListaPersoane() {
-        String SQL = "select * from persoane";
-        List <Persoana> pers = jdbcTemplateObject.query(SQL,new PersoanaMapper());
+
+    public int getNrSubValkm(int val){
+        String SQL = "SELECT COUNT(*) FROM masini WHERE nr_km<?";
+
+        // Specify the parameters for the SQL query
+        Object[] params = { val };
+
+        // Execute the query and get the count
+        int rowCount = jdbcTemplateObject.queryForObject(SQL, Integer.class, params);
+
+        return rowCount;
+    }
+
+
+
+
+    public List<Masina> getListaMasini() {
+        String SQL = "select * from masini";
+        List <Masina> pers = jdbcTemplateObject.query(SQL,new masinaMapper());
         return pers;
     }
 }
