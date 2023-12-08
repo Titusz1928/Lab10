@@ -10,19 +10,6 @@ public class MainApp {
         ApplicationContext context =new ClassPathXmlApplicationContext("beans_lab3.xml");
         OperatiiBD operatiiBD =(OperatiiBD)context.getBean("operatiiJDBC");
 
-        /*operatiiBD.insert("Mia", 11);
-        operatiiBD.insert("Moni", 2);
-        operatiiBD.insert("Oana", 15);
-        System.out.println("- Afisarea persoanelor din BD:" );
-        List<Persoana> persoane = operatiiBD.getListaPersoane();
-        for (Persoana p : persoane) {
-            System.out.println(p);
-        }
-        System.out.println("- Actualizarea varstei pentru persoana cu id-ul 3" );
-        operatiiBD.update(3, 21);
-        System.out.print("- Afisarea datelor persoanei cu id-ul 3: " );
-        Persoana p = operatiiBD.getPersoana(3);
-        System.out.println(p);*/
 
         int opt=0;
         Scanner sc=new Scanner(System.in);
